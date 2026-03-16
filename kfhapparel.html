@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>KFH Apparel · atelier masterpiece</title>
+  <!-- Tailwind (light) + fonts + GSAP -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- GSAP (for letter-by-letter + reveal) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <!-- Fonts: Playfair Display (serif) / Manrope (sans) -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Manrope:wght@200..700&display=swap" rel="stylesheet">
+  <!-- Font awesome 6 (free) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    /* ----- design system ----- */
+   
+  </style>
+</head>
+<body>
+
+  <!-- DESKTOP GLASS NAV -->
+  <nav class="glass-nav fixed top-0 w-full z-50 px-6 md:px-12 py-5">
+    <div class="flex justify-between items-center">
+      <!-- Logo -->
+      <div class="text-2xl serif gold tracking-wide">KFH</div>
+      
+      <!-- Desktop Navigation Links -->
+      <div class="hidden md:flex gap-8 text-sm uppercase tracking-[0.2em] text-white/80">
+        <a href="#home" class="hover:text-gold transition">Home</a>
+        <a href="#services" class="hover:text-gold transition">Savoir‑faire</a>
+        <a href="#lookbook" class="hover:text-gold transition">Lookbook</a>
+        <a href="#bespoke" class="hover:text-gold transition">Bespoke</a>
+      </div>
+      
+      <!-- Hamburger - Visible only on mobile -->
+      <div class="md:hidden">
+        <button class="hamburger-btn text-gold text-3xl focus:outline-none" onclick="toggleMobileMenu()">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU OVERLAY -->
+  <div id="mobileMenuOverlay" class="fixed inset-0 bg-black/95 backdrop-blur-xl z-[100] hidden md:hidden flex-col items-center justify-center">
+    <button class="absolute top-6 right-6 text-gold text-4xl" onclick="toggleMobileMenu()">
+      <i class="fa-solid fa-times"></i>
+    </button>
+    <div class="flex flex-col items-center gap-8 text-3xl">
+      <a href="#home" class="serif text-white hover:text-gold transition" onclick="toggleMobileMenu()">Home</a>
+      <a href="#services" class="serif text-white hover:text-gold transition" onclick="toggleMobileMenu()">Savoir‑faire</a>
+      <a href="#lookbook" class="serif text-white hover:text-gold transition" onclick="toggleMobileMenu()">Lookbook</a>
+      <a href="#bespoke" class="serif text-white hover:text-gold transition" onclick="toggleMobileMenu()">Bespoke</a>
+    </div>
+  </div>
+
+  <!-- MOBILE BOTTOM DOCK -->
+  <div class="mobile-dock">
+    <a href="#home" class="dock-item">
+      <i class="fa-solid fa-house text-xl mb-1"></i>
+      <span>Home</span>
+    </a>
+    <a href="#services" class="dock-item">
+      <i class="fa-solid fa-gem text-xl mb-1"></i>
+      <span>Atelier</span>
+    </a>
+    <a href="#lookbook" class="dock-item">
+      <i class="fa-solid fa-image text-xl mb-1"></i>
+      <span>Lookbook</span>
+    </a>
+    <a href="#bespoke" class="dock-item">
+      <i class="fa-solid fa-pen-to-square text-xl mb-1"></i>
+      <span>Bespoke</span>
+    </a>
+  </div>
+
+  <!-- HERO SECTION -->
+  <section id="home" class="pt-32 md:pt-40 pb-20 px-5 md:px-12 max-w-7xl mx-auto">
+    <div class="flex flex-col md:flex-row items-center gap-8 lg:gap-16">
+      <!-- left text -->
+      <div class="w-full md:w-1/2">
+        <p class="gold text-xs tracking-[0.4em] uppercase mb-4">Maison fondée</p>
+        <h1 id="heroHeadline" class="text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-[1.1]">
+          <span class="block">Draped in</span>
+          <span class="gold block">distinction.</span>
+        </h1>
+        <p class="text-gray-400 text-lg md:text-xl mt-6 max-w-md leading-relaxed">Where heritage meets sharp construction. Every thread tells your story.</p>
+        <!-- button group -->
+        <div class="hero-buttons flex flex-wrap gap-4 mt-10">
+          <div class="magnetic-wrap" id="magnetic1">
+            <button id="openMeasurementBtn" class="glow-btn"><i class="fa-regular fa-compass"></i> Measurement Vault</button>
+          </div>
+          <div class="magnetic-wrap" id="magnetic2">
+            <a href="#bespoke" class="glow-btn" id="bookBtn"><i class="fa-regular fa-calendar"></i> Book consultation</a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- right glass card -->
+      <div class="w-full md:w-1/2">
+        <div class="hero-glass-card h-[300px] md:h-[500px] lg:h-[600px] w-full" style="background-image: url('Screenshot\ 2026-03-13\ 124208.png');"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES SECTION -->
+  <section id="services" class="py-24 px-5 md:px-12 bg-[#0e0e0e] reveal-section">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-4xl md:text-5xl serif mb-4">L'art du sur-mesure</h2>
+      <p class="gold text-sm tracking-[0.3em] mb-16">— four pillars of excellence</p>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5 auto-rows-[200px]">
+        <div class="bento-card md:col-span-2 row-span-2 flex flex-col justify-end">
+          <span class="gold text-4xl mb-2">01</span>
+          <h3 class="text-3xl serif text-white">Haute Couture<br>fitting</h3>
+        </div>
+        <div class="bento-card row-span-1">
+          <i class="fa-regular fa-gem gold text-3xl"></i>
+          <h4 class="text-xl serif mt-4">Vault fabrics</h4>
+        </div>
+        <div class="bento-card row-span-2">
+          <i class="fa-regular fa-clock gold text-3xl"></i>
+          <h4 class="text-xl serif mt-4">72h express</h4>
+        </div>
+        <div class="bento-card">
+          <i class="fa-regular fa-hand-peace gold text-3xl"></i>
+          <h4 class="text-xl serif mt-2">Pattern mastery</h4>
+        </div>
+        <div class="bento-card col-span-2">
+          <div class="flex justify-between items-center">
+            <span class="gold text-2xl">→</span>
+            <span class="text-gray-300">embroidery & ciphers</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOOKBOOK SECTION -->
+  <section id="lookbook" class="py-24 px-5 md:px-12 reveal-section">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex justify-between items-end mb-16">
+        <h2 class="text-4xl md:text-5xl serif">The Lookbook</h2>
+        <p class="gold tracking-widest text-sm">— MMXXV</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="lookbook-item">
+          <img loading="lazy" src="Screenshot 2026-03-13 124208.png" alt="Lookbook 1" class="w-full h-full object-cover">
+        </div>
+        <div class="lookbook-item">
+          <img loading="lazy" src="Screenshot 2026-03-13 124208.png" alt="Lookbook 2" class="w-full h-full object-cover">
+        </div>
+        <div class="lookbook-item">
+          <img loading="lazy" src="Screenshot 2026-03-13 124208.png" alt="Lookbook 3" class="w-full h-full object-cover">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BESPOKE ORDER SECTION -->
+  <section id="bespoke" class="py-24 px-5 md:px-12 reveal-section">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-12">
+        <span class="gold text-xs tracking-[0.4em] uppercase">Bespoke commission</span>
+        <h2 class="text-4xl md:text-5xl serif text-white mt-3 mb-4">The Order Atelier</h2>
+        <div class="w-20 h-px bg-gold/50 mx-auto"></div>
+      </div>
+      
+      <div class="glass-card p-6 md:p-10 rounded-[40px] border border-gold/20" style="background: rgba(25,25,25,0.8); backdrop-filter: blur(10px);">
+        <div class="flex justify-between mb-10 text-xs uppercase tracking-wider">
+          <div class="flex items-center"><span class="w-6 h-6 rounded-full bg-gold text-black flex items-center justify-center text-sm mr-2">1</span> Details</div>
+          <div class="flex items-center text-gray-500"><span class="w-6 h-6 rounded-full border border-gold/30 flex items-center justify-center text-sm mr-2">2</span> Measurements</div>
+          <div class="flex items-center text-gray-500"><span class="w-6 h-6 rounded-full border border-gold/30 flex items-center justify-center text-sm mr-2">3</span> Payment</div>
+        </div>
+        
+        <form id="bespokeOrderForm" class="space-y-6">
+          <div class="grid md:grid-cols-2 gap-5">
+            <div>
+              <label class="block text-xs uppercase tracking-wider text-gray-400 mb-2">Full name *</label>
+              <input type="text" id="fullName" required class="w-full bg-[#1f1f1f] border border-gold/20 p-4 rounded-2xl focus:border-gold focus:outline-none transition">
+            </div>
+            <div>
+              <label class="block text-xs uppercase tracking-wider text-gray-400 mb-2">Email address *</label>
+              <input type="email" id="emailAddress" required class="w-full bg-[#1f1f1f] border border-gold/20 p-4 rounded-2xl focus:border-gold focus:outline-none transition">
+            </div>
+          </div>
+          
+          <div class="grid md:grid-cols-2 gap-5">
+            <div>
+              <label class="block text-xs uppercase tracking-wider text-gray-400 mb-2">Phone number</label>
+              <input type="tel" id="phoneNumber" placeholder="+234..." class="w-full bg-[#1f1f1f] border border-gold/20 p-4 rounded-2xl focus:border-gold focus:outline-none transition">
+            </div>
+            <div>
+              <label class="block text-xs uppercase tracking-wider text-gray-400 mb-2">Delivery address *</label>
+              <input type="text" id="deliveryAddress" required placeholder="Street, city, zip code" class="w-full bg-[#1f1f1f] border border-gold/20 p-4 rounded-2xl focus:border-gold focus:outline-none transition">
+            </div>
+          </div>
+          
+          <div class="grid md:grid-cols-3 gap-5">
+            <div>
+              <label class="block text-xs uppercase tracking-wider text-gray-400 mb-2">Garment type *</label>
+              <select id="garmentType" required class="w-full bg-[#1f1f1f] border border-gold/20 p-4 rounded-2xl focus:border-gold focus:outline-none transition">
+                <option value="" disabled selected>Select</option>
+                <option value="Suit">Suit (2-piece)</option>
+                <option value="Jacket">Jacket / Blazer</option>
+                <option value="Trousers">Trousers</option>
+                <option value="Overcoat">Overcoat</option>
+                <option value="Shirt">Shirt</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs uppercase tracking-wider text-gray-400 mb-2">Fabric type *</label>
+              <select id="fabricType" required class="w-full bg-[#1f1f1f] border border-gold/20 p-4 rounded-2xl focus:border-gold focus:outline-none transition">
+                <option value="" disabled selected>Select</option>
+                <option value="Cashmere">Cashmere</option>
+                <option value="Wool 150s">Wool Super 150s</option>
+                <option value="Silk/Linen">Silk/Linen blend</option>
+                <option value="Mohair">Mohair</option>
+                <option value="Cotton">Egyptian Cotton</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs uppercase tracking-wider text-gray-400 mb-2">Fabric color</label>
+              <input type="text" id="fabricColor" placeholder="e.g. charcoal, navy" class="w-full bg-[#1f1f1f] border border-gold/20 p-4 rounded-2xl focus:border-gold focus:outline-none transition">
+            </div>
+          </div>
+          
+          <div class="grid md:grid-cols-4 gap-5">
+            <div>
+              <label class="block text-xs uppercase tracking-wider text-gray-400 mb-2">Chest (in)</label>
+              <input type="text" id="chest" placeholder="40" class="w-full bg-[#1f1f1f] border border-gold/20 p-4 rounded-2xl focus:border-gold focus:outline-none transition">
+            </div>
+            <div>
+              <label class="block text-xs uppercase tracking-wider text-gray-400 mb-2">Waist (in)</label>
+              <input type="text" id="waist" placeholder="34" class="w-full bg-[#1f1f1f] border border-gold/20 p-4 rounded-2xl focus:border-gold focus:outline-none transition">
+            </div>
+            <div>
+              <label class="block text-xs uppercase tracking-wider text-gray-400 mb-2">Hips (in)</label>
+              <input type="text" id="hips" placeholder="38" class="w-full bg-[#1f1f1f] border border-gold/20 p-4 rounded-2xl focus:border-gold focus:outline-none transition">
+            </div>
+            <div>
+              <label class="block text-xs uppercase tracking-wider text-gray-400 mb-2">Height (cm)</label>
+              <input type="text" id="height" placeholder="180" class="w-full bg-[#1f1f1f] border border-gold/20 p-4 rounded-2xl focus:border-gold focus:outline-none transition">
+            </div>
+          </div>
+          
+          <div>
+            <label class="block text-xs uppercase tracking-wider text-gray-400 mb-2">Special requests</label>
+            <textarea id="specialRequests" rows="2" class="w-full bg-[#1f1f1f] border border-gold/20 p-4 rounded-2xl focus:border-gold focus:outline-none transition"></textarea>
+          </div>
+          
+          <div class="bg-[#1f1f1f] rounded-2xl p-5 flex justify-between items-center border border-gold/10">
+            <span class="text-gray-300">Estimated total:</span>
+            <span class="text-2xl serif gold">$2,450 <span class="text-xs text-gray-500">(approx)</span></span>
+          </div>
+          
+          <div class="flex flex-col md:flex-row gap-4 pt-4">
+            <button type="button" id="paystackBtn" class="glow-btn flex-1 justify-center py-4"><i class="fa-regular fa-lock mr-2"></i> Pay with PayStack</button>
+            <button type="button" id="whatsappOrderBtn" class="glow-btn flex-1 justify-center py-4"><i class="fa-brands fa-whatsapp mr-2"></i> WhatsApp order</button>
+          </div>
+          
+          <p class="text-xs text-gray-500 text-center mt-4">*All fields marked with * are required.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-[#0a0a0a] border-t border-[#D4AF37]/20 pt-16 pb-8 px-5 md:px-12">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-16">
+        <div>
+          <h3 class="text-3xl serif gold mb-4">KFH</h3>
+          <p class="text-gray-400 text-sm leading-relaxed mb-6">Bespoke tailoring since 2026. Where heritage meets sharp construction.</p>
+          <div class="flex space-x-4">
+            <a href="#" class="w-10 h-10 rounded-full border border-gold/30 flex items-center justify-center text-gold hover:bg-gold hover:text-black transition-all"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="w-10 h-10 rounded-full border border-gold/30 flex items-center justify-center text-gold hover:bg-gold hover:text-black transition-all"><i class="fa-brands fa-pinterest"></i></a>
+            <a href="#" class="w-10 h-10 rounded-full border border-gold/30 flex items-center justify-center text-gold hover:bg-gold hover:text-black transition-all"><i class="fa-brands fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        
+        <div>
+          <h4 class="text-white font-medium uppercase tracking-widest text-sm mb-6">Atelier</h4>
+          <ul class="space-y-3">
+            <li><a href="#" class="text-gray-400 hover:text-gold transition text-sm">Savoir-faire</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-gold transition text-sm">The Vault</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-gold transition text-sm">Couturiers</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-gold transition text-sm">Sustainability</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="text-white font-medium uppercase tracking-widest text-sm mb-6">Client</h4>
+          <ul class="space-y-3">
+            <li><a href="#" class="text-gray-400 hover:text-gold transition text-sm">Book consultation</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-gold transition text-sm">Measurement guide</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-gold transition text-sm">Shipping & returns</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-gold transition text-sm">FAQ</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="text-white font-medium uppercase tracking-widest text-sm mb-6">Contact</h4>
+          <ul class="space-y-3">
+            <li class="text-gray-400 text-sm flex items-start"><i class="fa-regular fa-envelope gold mt-1 mr-3"></i> atelier@kfh.apparel</li>
+            <li class="text-gray-400 text-sm flex items-start"><i class="fa-regular fa-phone gold mt-1 mr-3"></i> +234 909 886 5552</li>
+            <li class="text-gray-400 text-sm flex items-start"><i class="fa-regular fa-location-dot gold mt-1 mr-3"></i> Lagos, Nigeria</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="border-t border-[#D4AF37]/10 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
+        <p>© 2025 KFH Apparel. All rights reserved.</p>
+        <div class="flex space-x-6 mt-4 md:mt-0">
+          <a href="#" class="hover:text-gold transition">Privacy</a>
+          <a href="#" class="hover:text-gold transition">Terms</a>
+          <a href="#" class="hover:text-gold transition">Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MEASUREMENT VAULT MODAL -->
+  <div id="measurementModal" class="modal-overlay">
+    <div class="modal-content">
+      <h3 class="text-3xl serif gold mb-4">Measurement Vault</h3>
+      <div class="progress-step">
+        <div class="step active"></div>
+        <div class="step"></div>
+      </div>
+      <p class="text-gray-400 mb-4">Step 1: Upper body</p>
+      <input type="text" placeholder="Chest (in)" class="w-full bg-[#2a2a2a] border border-gold/20 p-3 rounded-xl mb-3">
+      <input type="text" placeholder="Shoulder width" class="w-full bg-[#2a2a2a] border border-gold/20 p-3 rounded-xl mb-5">
+      <button id="closeModalBtn" class="glow-btn w-full">Save & continue</button>
+    </div>
+  </div>
+
+<script src="js/app.js"></script>
+</body>
+</html>
